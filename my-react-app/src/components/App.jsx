@@ -32,6 +32,7 @@ function App() {
 
       {/* Aqui está o texto acessível para o teste */}
       <p>learn react</p> 
+      <p>aprenda react</p>
     </>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import reactLogo from './assets/react.svg'; // Ajuste o caminho se necessário
-import viteLogo from './assets/vite.svg'; // Ajuste o caminho se necessário
+import reactLogo from "../assets/react.svg";
+import viteLogo from "../assets/vite.svg";
+
 
 import './App.css';
 

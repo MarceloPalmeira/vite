@@ -1,6 +1,7 @@
-import '@testing-library/jest-dom'; // Adicione esta linha no início do arquivo
+import axios from 'axios';  // Certifique-se de importar o axios aqui
+import '@testing-library/jest-dom';  
 import React from 'react'; 
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from '../components/App';
 
 test('renders learn react link', () => {
@@ -14,3 +15,38 @@ test('renders learn react link', () => {
     const linkElement_2 = screen.getByText(/aprenda react/i);
     expect(linkElement_2).toBeInTheDocument();
   });
+
+  test('renders image', () => {
+    render(<App />);
+    const imageElement = screen.getByAltText(/nees logo/i);  
+    expect(imageElement).toBeInTheDocument();
+  });
+
+  test('renders button', () => {
+    render(<App />);
+    const buttonElement = screen.getByText(/Contagem/i);
+    expect(buttonElement).toBeInTheDocument();
+  });
+
+  test('Data loading', () => {
+    render(<App />);
+    const dataElement = screen.getByText(/Carregando.../i);
+    expect(dataElement).toBeInTheDocument();
+  }
+  );
+ 
+  test('exibe os dados dos estados brasileiros na interface', async () => {
+    render(<App />);
+  a
+    await waitFor(() => screen.getByText(/Carregando.../i));
+  
+    const jsonContent = await screen.findByText(/"nome":/i); 
+  
+    expect(jsonContent).toHaveTextContent("Acre");
+    expect(jsonContent).toHaveTextContent("Alagoas");
+    expect(jsonContent).toHaveTextContent("Amapá");
+    expect(jsonContent).toHaveTextContent("Amazonas");
+    expect(jsonContent).toHaveTextContent("Bahia");
+    expect(jsonContent).toHaveTextContent("Ceará");
+  });
+  

@@ -37,11 +37,14 @@ test('renders learn react link', () => {
  
   test('exibe os dados dos estados brasileiros na interface', async () => {
     render(<App />);
-  a
+  
+    // Espera que o carregamento aconteça
     await waitFor(() => screen.getByText(/Carregando.../i));
   
-    const jsonContent = await screen.findByText(/"nome":/i); 
+    // Agora, espera que o conteúdo do JSON seja renderizado
+    const jsonContent = await screen.findByText(/"nome":/i);  // Espera que o campo 'nome' seja exibido, é mais genérico.
   
+    // Verifica se pelo menos um dos estados aparece na tela, sem se preocupar com a formatação
     expect(jsonContent).toHaveTextContent("Acre");
     expect(jsonContent).toHaveTextContent("Alagoas");
     expect(jsonContent).toHaveTextContent("Amapá");
@@ -49,4 +52,6 @@ test('renders learn react link', () => {
     expect(jsonContent).toHaveTextContent("Bahia");
     expect(jsonContent).toHaveTextContent("Ceará");
   });
+  
+  
   
